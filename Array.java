@@ -125,3 +125,74 @@ Ans-class Solution {
         }
     }
 }  
+
+Q.You are given two arrays a[] and b[], return the Union of both the arrays in any order.
+
+The Union of two arrays is a collection of all distinct elements present in either of the arrays. If an element appears more than once in one or both arrays, it should be included only once in the result.
+
+Note: Elements of a[] and b[] are not necessarily distinct.
+Note that, You can return the Union in any order but the driver code will print the result in sorted order only.
+
+Examples:
+
+Input: a[] = [1, 2, 3, 2, 1], b[] = [3, 2, 2, 3, 3, 2]
+Output: [1, 2, 3]
+Explanation: Union set of both the arrays will be 1, 2 and 3.
+// answer using arraylist but not satisfied the condition because time complexity(both the answer are covered first is using arraylist and second is using hashset)
+
+Ans-(first approch arraylist)
+    class Solution {
+    public static ArrayList<Integer> findUnion(int[] a, int[] b) {
+        // code here
+         ArrayList<Integer> list = new ArrayList<>();
+         for(int i=0;i<a.length;i++){
+            if(!list.contains(a[i])) list.add(a[i]);
+         }
+         for(int i=0;i<b.length;i++){
+            if(!list.contains(b[i])) list.add(b[i]);
+         }
+         return list;
+    }
+}
+=> second approch using hashset(in hashset can't stored duplicate value )
+
+    class Solution {
+    public static ArrayList<Integer> findUnion(int[] a, int[] b) {
+        // code here
+    
+        HashSet<Integer> set = new HashSet<>();
+        for(int i=0; i<a.length;i++){
+            set.add(a[i]);
+        }
+        for(int i=0; i<b.length;i++){
+            set.add(b[i]);
+        }
+        return new ArrayList<>(set);
+    }   
+}
+
+Q.Given an array arr, rotate the array by one position in clockwise direction.
+
+Examples:
+
+Input: arr[] = [1, 2, 3, 4, 5]
+Output: [5, 1, 2, 3, 4]
+Explanation: If we rotate arr by one position in clockwise 5 come to the front and remaining those are shifted to the end.
+
+Ans-class Solution {
+    public void rotate(int[] arr) {
+        // code here
+        int array[] = new int[arr.length];
+        int j=1;
+        array[0]=arr[arr.length-1];
+        for(int i=0;i<arr.length-1;i++){
+            array[j]=arr[i];
+            j++;
+        }
+        int i=0;
+        for(int var:array){
+            arr[i++]=var;
+        }
+    }
+}    
+    
