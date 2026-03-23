@@ -384,3 +384,65 @@ Answer-
 }
 
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Question-
+    Given two sorted arrays a[] and b[], find and return the median of the combined array after merging them into a single sorted array.
+
+Examples:
+
+Input: a[] = [3, 5, 6, 12, 15], b[] = [3, 4, 6, 10, 10, 12]
+Output: 6
+Explanation: The merged array is [3, 3, 4, 5, 6, 6, 10, 10, 12, 12, 15]. So the median of the merged array is 6.
+Input: a[] = [2, 3, 5, 8], b[] = [10, 12, 14, 16, 18, 20]
+Output: 11
+Explanation: The merged array is [2, 3, 5, 8, 10, 12, 14, 16, 18, 20]. So the median of the merged array is (10 + 12) / 2 = 11.
+
+Answer-
+    import java.util.*;
+
+class Solution {
+    public double medianOf2(int a[], int b[]) {
+        int total = a.length + b.length;
+        int[] array = new int[total];
+        
+        int j = 0;
+        for (int i = 0; i < a.length; i++) {
+            array[j++] = a[i];
+        }
+        for (int i = 0; i < b.length; i++) {
+            array[j++] = b[i];
+        }
+
+        Arrays.sort(array);
+
+        // Odd case
+        if (total % 2 != 0) {
+            return array[total / 2];
+        } 
+        // Even case
+        else {
+            return (array[total / 2] + array[(total / 2) - 1]) / 2.0;
+        }
+    }
+}
+
+
+
