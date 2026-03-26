@@ -419,6 +419,50 @@ Answer-
 
 
 
+Question-
+    Given an array and a range a, b. The task is to partition the array around the range such that the array is divided into three parts.
+1) All elements smaller than a come first.
+2) All elements in range a to b come next.
+3) All elements greater than b appear in the end.
+The individual elements of three sets can appear in any order. You are required to return the modified array.
+
+Note: The generated output is true if you modify the given array successfully. Otherwise false.
+
+Geeky Challenge: Solve this problem in O(n) time complexity.
+
+Examples:
+
+Input: arr[] = [1, 2, 3, 3, 4], a = 1, b = 2
+Output: true
+Explanation: One possible arrangement is: {1, 2, 3, 3, 4}. If you return a valid arrangement, output will be true.
+
+    Answer-
+ class Solution {
+    public void threeWayPartition(int arr[], int a, int b) {
+        int low=0;
+        int high= arr.length-1;
+        int mid=0;
+        while(mid<=high){
+            if(arr[mid]<a){
+                int temp = arr[mid];
+                arr[mid]=arr[low];
+                arr[low]=temp;
+                mid++;
+                low++;
+            }
+            else if(arr[mid]>b){
+                int temp=arr[high];
+                arr[high]=arr[mid];
+                arr[mid]=temp;
+                high--;     
+            }
+            else{
+                mid++;
+            }
+        } 
+    }
+}   
+
 
 Question-
     Given an array arr and a number k. One can apply a swap operation on the array any number of times, i.e choose any two index i and j (i < j) and swap arr[i] , arr[j] . Find the minimum number of swaps required to bring all the numbers less than or equal to k together, i.e. make them a contiguous subarray.
