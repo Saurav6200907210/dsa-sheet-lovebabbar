@@ -411,6 +411,42 @@ Answer-
 
 
 
+
+
+
+
+
+Question-
+    Given an array arr[] and an integer target, determine if there exists a triplet in the array whose sum equals the given target.
+
+Return true if such a triplet exists, otherwise, return false.
+
+Examples: 
+
+Input: arr[] = [1, 4, 45, 6, 10, 8], target = 13
+Output: true 
+Explanation: The triplet {1, 4, 8} sums up to 13.
+
+Answer-
+class Solution {
+    public boolean hasTripletSum(int arr[], int target) {
+        // code Here
+        int n=arr.length;
+        for(int i=0;i<n-2;i++){
+            for(int j=i+1;j<n-1;j++){
+                for(int k=j+1;k<n;k++){
+                    if(arr[i]+arr[j]+arr[k]== target){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+}
+
+
+
 Question-
     Given an array arr[] with non-negative integers representing the height of blocks. If the width of each block is 1, compute how much water can be trapped between the blocks during the rainy season. 
 
